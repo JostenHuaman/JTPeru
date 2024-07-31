@@ -111,7 +111,17 @@ if ($_SESSION['ventas']==1) {
             if (selectElement.value === 'activar') {
                 selectElement.value = inputAgencia.value; // Establecer el valor del select al del input
             }
+            otraAgenciaDiv.style.display = 'none'; // Ocultar el campo de entrada
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.querySelector('form');
+            var btnGuardar = document.getElementById('btnGuardar');
+
+            btnGuardar.addEventListener('click', function() {
+                handleSubmit();
+                form.submit();
+            });
+        });
     </script>
   <div class="container">
      <form action="" method="post" onsubmit="handleSubmit(event)">
