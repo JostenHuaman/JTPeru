@@ -66,7 +66,7 @@ $email = "jytperuimport@gmail.com";
 		</tr>
 		<tr>
 			<td>
-				Dirección: <?php echo $reg->serie_comprobante; ?>
+				Dirección: <?php echo $reg->direccion; ?>
 			</td>
 		</tr>
 
