@@ -99,15 +99,22 @@ if ($_SESSION['ventas']==1) {
             var inputAgencia = document.getElementById('otraAgencia');
             if (selectElement.value === 'activar') {
                 otraAgenciaDiv.style.display = 'block';
-                inputAgencia.name = 'otra_agencia';
+                inputAgencia.name = 'agencia';
             } else {
                 otraAgenciaDiv.style.display = 'none';
                 inputAgencia.name = ''; // No enviar este campo si no es necesario
             }
         }
+        function handleSubmit(event) {
+            var selectElement = document.getElementById('agencia');
+            var inputAgencia = document.getElementById('otraAgencia');
+            if (selectElement.value === 'activar') {
+                selectElement.value = inputAgencia.value; // Establecer el valor del select al del input
+            }
+        }
     </script>
   <div class="container">
-     <form action="" method="post">
+     <form action="" method="post" onsubmit="handleSubmit(event)">
         <div class="form-group col-lg-2 col-md-3 col-xs-6">
                 <label for="agencia">Agencia:</label>
                 <select name="agencia" id="agencia" class="form-control selectpicker" onchange="toggleTextbox(this)">
