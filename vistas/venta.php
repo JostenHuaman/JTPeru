@@ -329,8 +329,8 @@ if ($_SESSION['ventas']==1) {
                   <h4 id="estado_pago" class="float-right"></h4> 
                 </div>
             </div>
-            <div class="modal-body">
-            <div id="venta-info" style="color: #e7493b; border-radius: 5px; font-size: 16px;">
+            <div class="modal-body">            
+              <div id="venta-info" style="color: #e7493b; border-radius: 5px; font-size: 16px;">
                 <b>Cliente: <span id="nombre_cliente_editar"></b></span>
                </div>
                 <br>
