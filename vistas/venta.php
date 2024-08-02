@@ -246,7 +246,7 @@ if ($_SESSION['ventas']==1) {
           </table>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-default" type="button" data-dismiss="modal">Cerrar</button>
+          <button class="btn btn-default" type="button" data-dismiss="modal" onclick="location.reload()">Cerrar</button>
         </div>
       </div>
     </div>
@@ -313,7 +313,7 @@ if ($_SESSION['ventas']==1) {
                 <h4 id="saldo_restante">Saldo Restante: S/. 0.00</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Cerrar</button>
             </div>
         </div>
     </div>
@@ -376,7 +376,7 @@ if ($_SESSION['ventas']==1) {
                 <h4 id="total">Total: S/. 0.00</h4>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Cerrar</button>
             </div>
         </div>
     </div>
