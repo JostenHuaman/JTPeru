@@ -124,6 +124,16 @@ public function eliminarAbono($idpago) {
 	return ejecutarConsulta($sql);
 }
 
+public function mostrarEditar($idventa) {
+	$sql="SELECT a.nombre AS articulo, a.codigo, d.cantidad, d.precio_venta,d.descuento,(d.cantidad*d.precio_venta-d.descuento) AS subtotal FROM detalle_venta d INNER JOIN articulo a ON d.idarticulo=a.idarticulo WHERE d.idventa='$idventa'";
+    $pagos = ejecutarConsulta($sql);
+
+    $sql_total = "SELECT total_venta FROM venta WHERE idventa = '$idventa'";
+    $total = ejecutarConsultaSimpleFila($sql_total);
+
+    return array("total_venta" => $total['total_venta'], "pagos" => $pagos->fetch_all(MYSQLI_ASSOC));
+}
+
 }
 
  ?>

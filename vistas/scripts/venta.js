@@ -487,6 +487,45 @@ function abonar(idventa) {
         $('#abonarModal').modal('show');
     });
 }
+//################## IMPLEMENTADO 2-08 #####################################################################
+function editar(idventa) {
+    $('#idventa').val(idventa);
+    $.post("../ajax/venta.php?op=editar", {idventa: idventa}, function(data, status) {
+        data = JSON.parse(data);
+        $('#total_venta').val(data.total_venta);
+        $('#nombre_cliente').text(data.cliente);  // Asegurar de estar correcto
+        $('#idcliente').text(data.cliente); // Esta línea está actualizando el div con el idcliente
+        let totalPagos = 0;
+        $('#tabla_editar tbody').empty();
+        for (let pago of data.pagos) {
+            $('#tabla_editar tbody').append(`<tr>
+				<td>${pago.articulo}</td>
+				<td>${pago.codigo}</td>
+				<td>${pago.cantidad}</td>
+				<td>${pago.precio_venta}</td>
+                <td>${pago.descuento}</td>
+				<td>${pago.subtotal}</td>
+				</tr>`);
+            totalPagos += parseFloat(pago.monto);
+        }
+
+      //  <td><button class="btn btn-danger btn-xs" onclick="eliminarPago(${pago.idpago})"><i class="fa fa-trash"></i></button></td>
+        let saldoRestante = parseFloat(data.total_venta) - totalPagos;
+        $('#saldo_restante').text('Saldo Restante: S/. ' + saldoRestante.toFixed(2));
+
+        // Mostrar icono según el estado de pago y deshabilitar el campo si el saldo es 0
+        mostrarIconoEstadoPago(saldoRestante);
+        if (saldoRestante <= 0) {
+            $('#monto_abonar').prop('disabled', true);
+        } else {
+            $('#monto_abonar').prop('disabled', false);
+        }
+
+        $('#editarModal').modal('show');
+    });
+}
+
+
 
 function mostrarIconoEstadoPago(saldoRestante) {
     let estadoPagoDiv = $('#estado_pago');

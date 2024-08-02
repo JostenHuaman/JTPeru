@@ -141,14 +141,16 @@ if ($_SESSION['ventas']==1) {
       </form>
 
 
-    <div class="form-group col-lg-2 col-md-2 col-xs-6">
+    <div class="form-group col-lg-3 col-md-2 col-xs-6">
       <label for="">Dirección: </label>
       <input class="form-control" type="text" name="direccion" id="direccion" maxlength="70" placeholder="Ingrese la dirección">
     </div>
     <!--#################################AGREGADO 26-07###############################-->
-    <div class="form-group col-lg-2 col-md-2 col-xs-6">
+    <div class="form-group col-lg-4 col-md-2 col-xs-6">
       <label for="">Consideraciones: </label>
-      <input class="form-control" type="text" name="consideraciones" id="consideraciones" maxlength="70" placeholder="Ingrese las observaciones">
+      <textarea id="consideraciones" name="consideraciones" rows="3" cols="50" type="text" maxlength="70" placeholder="Ingrese las observaciones"></textarea><br><br>
+      <!--<input type="text" maxlength="70" placeholder="Ingrese las observaciones" value="Enviar">-->
+      <!--<input class="form-control" type="text" name="consideraciones" id="consideraciones" maxlength="70" placeholder="Ingrese las observaciones">-->
     </div>
      <!--###############################################################################-->
      <div class="form-group col-lg-1 col-md-2 col-xs-6">
@@ -316,6 +318,78 @@ if ($_SESSION['ventas']==1) {
         </div>
     </div>
 </div>
+
+ <!--IMPLEMENTADO 2-08 EDITAR -->
+
+  <div id="editarModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                  <h3 class="modal-title"><b>Editar a la Venta</b></h3> 
+                <div class="ml-auto">
+                  <h4 id="estado_pago" class="float-right"></h4> 
+                </div>
+            </div>
+            <div class="modal-body">
+            <div id="venta-info" style="color: #e7493b; border-radius: 5px; font-size: 16px;">
+                Cliente: <span id="nombre_cliente"></span>
+                </div>
+                <br>
+                <form id="form_abonar">
+                    <input type="hidden" name="idventa" id="idventa">
+                    <div class="form-group">
+                        <label for="monto_abonar">Monto a Abonar</label>
+                        <input type="number" class="form-control" id="monto_abonar" name="monto_abonar" step="any" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="metodo_pago">Método de Pago</label>
+                        <select class="form-control" id="metodo_pago" name="metodo_pago" required>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Yape">Yape</option>
+                            <option value="BCP">Transferencia BCP</option>
+                            <option value="Interbank">Interbank</option>
+                            <option value="BBVA">BBVA</option>
+                            <option value="Banco de la Nacion">Banco de la Nacion</option>
+                            <option value="PLIN">PLIN</option>
+                        </select>
+                    </div> 
+
+                    <div class="form-group" id="confirmacion_yape" style="display: none;">
+                        <label for="numero_confirmacion">Número de Operación</label>
+                        <input type="text" class="form-control" id="numero_confirmacion" name="numero_confirmacion" maxlength="15">
+                    </div>
+                    <button type="submit" class="btn btn-danger">Abonar</button>
+                </form>
+                <br>
+                <div align="center">
+                    <h4>Ventas Realizadas</h4>
+                </div>
+                <table id="tabla_editar" class="table table-striped table-bordered table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th>Opciones</th>
+                            <th>Articulo</th>
+                            <th>Cantidad</th>
+                            <th>Precio Venta</th>
+                            <th>Descuento</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <h4 id="total">Total: S/. 0.00</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 <?php 
 }else{
  require 'noacceso.php'; 

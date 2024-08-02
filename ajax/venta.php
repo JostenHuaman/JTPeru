@@ -37,7 +37,6 @@ switch ($_GET["op"]) {
 	}
 		break;
 	
-
 	case 'anular':
 		$rspta=$venta->anular($idventa);
 		echo $rspta ? "Ingreso anulado correctamente" : "No se pudo anular el ingreso";
@@ -69,8 +68,7 @@ switch ($_GET["op"]) {
 			<td>'.$reg->nombre.'</td>
 			<td>'.$reg->cantidad.'</td>
 			<td>'.$reg->precio_venta.'</td>
-			<td>'.$reg->descuento.'</td>
-			
+            <td>'.$reg->descuento.'</td>
 			<td>'.$reg->subtotal.'</td></tr>';
 			$total=$total+($reg->precio_venta*$reg->cantidad)-$reg->descuento;
 		}
@@ -101,6 +99,7 @@ switch ($_GET["op"]) {
 					$botones .= ' <button class="btn btn-danger btn-xs" onclick="anular(' . $reg->idventa . ')"><i class="fa fa-close"></i></button>';
 					$botones .= ' <a target="_blank" href="' . $url . $reg->idventa . '"><button class="btn btn-info btn-xs"><i class="fa fa-file"></i></button></a>';
 					$botones .= ' <button class="btn btn-success btn-xs" onclick="abonar(' . $reg->idventa . ')"><i class="fa fa-money"></i></button>';
+					$botones .= ' <button class="btn btn-success btn-xs" onclick="editar(' . $reg->idventa . ')"><i class="fa fa-money"></i></button>';
 				} else {
 					$botones = '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idventa . ')"><i class="fa fa-eye"></i></button>';
 				}
@@ -203,6 +202,25 @@ switch ($_GET["op"]) {
 							echo json_encode($respuesta);
 							break;
 						
+						case 'editar':
+							$idventa = $_POST['idventa'];
+							
+							// Obtener datos del cliente
+							$datosCliente = $venta->obtenerDatosCliente($idventa);
+							
+							// Obtener pagos
+							$datosPagos = $venta->mostrarEditar($idventa);
+							
+							// Combinar todos los datos en una respuesta
+							$respuesta = array(
+								'cliente' => $datosCliente['cliente'],
+								'total_venta' => $datosPagos['total_venta'],
+								'pagos' => $datosPagos['pagos']
+							);
+							
+							echo json_encode($respuesta);
+							break;	
+
 							case 'realizarAbono':
 								$idpago = isset($_POST['idpago']) ? $_POST['idpago'] : "";
 								$idventa = isset($_POST['idventa']) ? $_POST['idventa'] : "";
