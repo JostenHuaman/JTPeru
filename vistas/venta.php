@@ -123,7 +123,7 @@ if ($_SESSION['ventas']==1) {
             });
         });
     </script>
-  <div class="container">
+  <div class="">
      <form action="" method="post" onsubmit="handleSubmit(event)">
         <div class="form-group col-lg-2 col-md-3 col-xs-6">
                 <label for="agencia">Agencia:</label>
@@ -146,9 +146,9 @@ if ($_SESSION['ventas']==1) {
       <input class="form-control" type="text" name="direccion" id="direccion" maxlength="70" placeholder="Ingrese la dirección">
     </div>
     <!--#################################AGREGADO 26-07###############################-->
-    <div class="form-group col-lg-4 col-md-2 col-xs-6">
+    <div class="form-group col-lg-3 col-md-2 col-xs-6">
       <label for="">Consideraciones: </label>
-      <textarea id="consideraciones" name="consideraciones" rows="3" cols="50" type="text" maxlength="70" placeholder="Ingrese las observaciones"></textarea><br><br>
+      <textarea id="consideraciones" name="consideraciones" rows="3" cols="52" type="text" maxlength="70" placeholder="Ingrese las observaciones"></textarea><br><br>
       <!--<input type="text" maxlength="70" placeholder="Ingrese las observaciones" value="Enviar">-->
       <!--<input class="form-control" type="text" name="consideraciones" id="consideraciones" maxlength="70" placeholder="Ingrese las observaciones">-->
     </div>
