@@ -148,7 +148,7 @@ if ($_SESSION['ventas']==1) {
     <!--#################################AGREGADO 26-07###############################-->
     <div class="form-group col-lg-3 col-md-2 col-xs-6">
       <label for="">Consideraciones: </label>
-      <textarea id="consideraciones" name="consideraciones" rows="3" cols="52" type="text" maxlength="70" placeholder="Ingrese las observaciones"></textarea><br><br>
+      <textarea id="consideraciones" name="consideraciones" rows="3" class="form-control" type="text" maxlength="70" placeholder="Ingrese las observaciones"></textarea><br><br>
       <!--<input type="text" maxlength="70" placeholder="Ingrese las observaciones" value="Enviar">-->
       <!--<input class="form-control" type="text" name="consideraciones" id="consideraciones" maxlength="70" placeholder="Ingrese las observaciones">-->
     </div>
