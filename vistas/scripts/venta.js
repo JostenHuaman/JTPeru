@@ -504,9 +504,9 @@ function editar(idventa) {
 				<td>${pago.articulo}</td>
 				<td>${pago.codigo}</td>
 				<td>${pago.cantidad}</td>
-				<td>${pago.precio_venta}</td>
+				<td>S/. ${pago.precio_venta}</td>
                 <td>${pago.descuento}</td>
-				<td>${pago.subtotal}</td>
+				<td>S/. ${pago.subtotal}</td>
 				</tr>`);
             totalPagos += parseFloat(pago.monto);
         }

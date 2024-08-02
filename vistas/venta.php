@@ -338,9 +338,12 @@ if ($_SESSION['ventas']==1) {
                     <input type="hidden" name="idventa" id="idventa">
                     <div class="form-group">
                         <label for="monto_abonar">Costos de Envio</label>
-                        <input class="form-control" type="number" name="costos_envios" onchange="SalirCasilla()" id="costos_envios" maxlength="10" placeholder="S/." step="any">
+                        <br>
+                        <span>S/. </span><input class="" type="number" name="costos_envios" onchange="SalirCasilla()" id="costos_envios" maxlength="10" placeholder="S/." step="any">
+                        <br><br>
                         <label for="monto_abonar">Otros Costos</label>
-                        <input class="form-control" type="number" name="costos_otros" onchange="SalirCasilla()" id="costos_otros" maxlength="10" placeholder="S/. " step="any">
+                        <br>
+                        <span>S/. </span><input class="" type="number" name="costos_otros" onchange="SalirCasilla()" id="costos_otros" maxlength="10" placeholder="S/. " step="any">
                     </div>
                     <div class="form-group" id="confirmacion_yape" style="display: none;">
                         <label for="numero_confirmacion">Número de Operación</label>
