@@ -338,27 +338,16 @@ if ($_SESSION['ventas']==1) {
                 <form id="form_abonar">
                     <input type="hidden" name="idventa" id="idventa">
                     <div class="form-group">
-                        <label for="monto_abonar">Monto a Abonar</label>
-                        <input type="number" class="form-control" id="monto_abonar" name="monto_abonar" step="any" required>
+                        <label for="monto_abonar">Costos de Envio</label>
+                        <input class="form-control" type="number" name="costo_envio" onchange="SalirCasilla()" id="costo_envio" maxlength="10" placeholder="S/." step="any">
+                        <label for="monto_abonar">Otros Costos</label>
+                        <input class="form-control" type="number" name="costo_otros" onchange="SalirCasilla()" id="costo_otros" maxlength="10" placeholder="S/. " step="any">
                     </div>
-                    <div class="form-group">
-                        <label for="metodo_pago">Método de Pago</label>
-                        <select class="form-control" id="metodo_pago" name="metodo_pago" required>
-                            <option value="Efectivo">Efectivo</option>
-                            <option value="Yape">Yape</option>
-                            <option value="BCP">Transferencia BCP</option>
-                            <option value="Interbank">Interbank</option>
-                            <option value="BBVA">BBVA</option>
-                            <option value="Banco de la Nacion">Banco de la Nacion</option>
-                            <option value="PLIN">PLIN</option>
-                        </select>
-                    </div> 
-
                     <div class="form-group" id="confirmacion_yape" style="display: none;">
                         <label for="numero_confirmacion">Número de Operación</label>
                         <input type="text" class="form-control" id="numero_confirmacion" name="numero_confirmacion" maxlength="15">
                     </div>
-                    <button type="submit" class="btn btn-danger">Abonar</button>
+                    <button type="submit" class="btn btn-danger">Guardar</button>
                 </form>
                 <br>
                 <div align="center">
