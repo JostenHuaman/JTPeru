@@ -331,9 +331,7 @@ if ($_SESSION['ventas']==1) {
             </div>
             <div class="modal-body">
             <div id="venta-info" style="color: #e7493b; border-radius: 5px; font-size: 16px;">
-               <center>
                 <b>Cliente: <span id="nombre_cliente_editar"></b></span>
-               </center> 
                </div>
                 <br>
                 <form id="form_abonar">
@@ -349,7 +347,7 @@ if ($_SESSION['ventas']==1) {
                         <input type="text" class="form-control" id="numero_confirmacion" name="numero_confirmacion" maxlength="15">
                     </div>
                     <center>
-                    <button type="submit" class="btn btn-danger" >Editar</button>
+                    <button type="submit" class="btn btn-danger" >Editar Costos</button>
                     </center>
                 </form>
                 <br>
