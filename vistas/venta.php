@@ -325,9 +325,6 @@ if ($_SESSION['ventas']==1) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                 <center> 
-                  <h3 class="modal-title"><b>Mostrar Venta</b></h3> 
-                 </center>
                 <div class="ml-auto">
                   <h4 id="estado_pago" class="float-right"></h4> 
                 </div>
@@ -352,7 +349,7 @@ if ($_SESSION['ventas']==1) {
                         <input type="text" class="form-control" id="numero_confirmacion" name="numero_confirmacion" maxlength="15">
                     </div>
                     <center>
-                    <button type="submit" class="btn btn-danger" >Guardar</button>
+                    <button type="submit" class="btn btn-danger" >Editar</button>
                     </center>
                 </form>
                 <br>
