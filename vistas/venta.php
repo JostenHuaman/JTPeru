@@ -325,29 +325,35 @@ if ($_SESSION['ventas']==1) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                  <h3 class="modal-title"><b>Editar a la Venta</b></h3> 
+                 <center> 
+                  <h3 class="modal-title"><b>Mostrar Venta</b></h3> 
+                 </center>
                 <div class="ml-auto">
                   <h4 id="estado_pago" class="float-right"></h4> 
                 </div>
             </div>
             <div class="modal-body">
             <div id="venta-info" style="color: #e7493b; border-radius: 5px; font-size: 16px;">
-                Cliente: <span id="nombre_cliente"></span>
-                </div>
+               <center>
+                <b>Cliente: <span id="nombre_cliente_editar"></b></span>
+               </center> 
+               </div>
                 <br>
                 <form id="form_abonar">
                     <input type="hidden" name="idventa" id="idventa">
                     <div class="form-group">
                         <label for="monto_abonar">Costos de Envio</label>
-                        <input class="form-control" type="number" name="costo_envio" onchange="SalirCasilla()" id="costo_envio" maxlength="10" placeholder="S/." step="any">
+                        <input class="form-control" type="number" name="costos_envios" onchange="SalirCasilla()" id="costos_envios" maxlength="10" placeholder="S/." step="any">
                         <label for="monto_abonar">Otros Costos</label>
-                        <input class="form-control" type="number" name="costo_otros" onchange="SalirCasilla()" id="costo_otros" maxlength="10" placeholder="S/. " step="any">
+                        <input class="form-control" type="number" name="costos_otros" onchange="SalirCasilla()" id="costos_otros" maxlength="10" placeholder="S/. " step="any">
                     </div>
                     <div class="form-group" id="confirmacion_yape" style="display: none;">
                         <label for="numero_confirmacion">Número de Operación</label>
                         <input type="text" class="form-control" id="numero_confirmacion" name="numero_confirmacion" maxlength="15">
                     </div>
-                    <button type="submit" class="btn btn-danger">Guardar</button>
+                    <center>
+                    <button type="submit" class="btn btn-danger" >Guardar</button>
+                    </center>
                 </form>
                 <br>
                 <div align="center">

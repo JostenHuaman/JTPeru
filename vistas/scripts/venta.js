@@ -493,7 +493,9 @@ function editar(idventa) {
     $.post("../ajax/venta.php?op=editar", {idventa: idventa}, function(data, status) {
         data = JSON.parse(data);
         $('#total_venta').val(data.total_venta);
-        $('#nombre_cliente').text(data.cliente);  // Asegurar de estar correcto
+        $('#nombre_cliente_editar').text(data.cliente);  // Asegurar de estar correcto
+        $('#costos_envios').val(data.costo_envio); // Esta línea está actualizando el div con el idcliente
+        $('#costos_otros').val(data.costo_otros);
         $('#idcliente').text(data.cliente); // Esta línea está actualizando el div con el idcliente
         let totalPagos = 0;
         $('#tabla_editar tbody').empty();

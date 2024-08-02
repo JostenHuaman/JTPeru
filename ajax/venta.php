@@ -101,7 +101,7 @@ switch ($_GET["op"]) {
 					$botones .= ' <button class="btn btn-success btn-xs" onclick="abonar(' . $reg->idventa . ')"><i class="fa fa-money"></i></button>';
 					$botones .= ' <button class="btn btn-success btn-xs" onclick="editar(' . $reg->idventa . ')"><i class="fa fa-edit"></i></button>';
 				} else {
-					$botones = '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idventa . ')"><i class="fa fa-eye"></i></button>';
+		     		$botones = '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idventa . ')"><i class="fa fa-eye"></i></button>';
 				}
 		
 				$data[] = array(
@@ -206,14 +206,19 @@ switch ($_GET["op"]) {
 							$idventa = $_POST['idventa'];
 							
 							// Obtener datos del cliente
-							$datosCliente = $venta->obtenerDatosCliente($idventa);
+							$datosCliente = $venta->obtenerDatosEditar($idventa);
 							
+							// Obtener datos del costo
+							$datosCostos = $venta->obtenerCostos($idventa);
+
 							// Obtener pagos
 							$datosPagos = $venta->mostrarEditar($idventa);
 							
 							// Combinar todos los datos en una respuesta
 							$respuesta = array(
 								'cliente' => $datosCliente['cliente'],
+								'costo_envio' => $datosCostos['costo_envio'],
+								'costo_otros' => $datosCostos['costo_otros'],
 								'total_venta' => $datosPagos['total_venta'],
 								'pagos' => $datosPagos['pagos']
 							);
