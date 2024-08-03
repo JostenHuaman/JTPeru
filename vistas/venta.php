@@ -246,7 +246,7 @@ if ($_SESSION['ventas']==1) {
           </table>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-default" type="button" data-dismiss="modal" onclick="location.reload()">Cerrar</button>
+          <button class="btn btn-default" type="button" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
