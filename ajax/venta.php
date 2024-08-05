@@ -71,6 +71,7 @@ switch ($_GET["op"]) {
             <td>'.$reg->descuento.'</td>
 			<td>'.$reg->subtotal.'</td></tr>';
 			$total=$total+($reg->precio_venta*$reg->cantidad)-$reg->descuento;
+			$total2=$total+($reg->precio_venta*$reg->cantidad)-$reg->descuento;
 		}
 		echo '<tfoot>
          <th>TOTAL</th>

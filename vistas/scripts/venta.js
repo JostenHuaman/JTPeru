@@ -512,8 +512,8 @@ function editar(idventa) {
         }
 
       //  <td><button class="btn btn-danger btn-xs" onclick="eliminarPago(${pago.idpago})"><i class="fa fa-trash"></i></button></td>
-        let saldoRestante = parseFloat(data.total_venta) - totalPagos;
-        $('#saldo_restante').text('Saldo Restante: S/. ' + saldoRestante.toFixed(2));
+      let saldoRestante = parseFloat(data.total_venta);
+        $('#saldo_restante_editar').text('Total: S/. ' + saldoRestante.toFixed(2));
 
         // Mostrar icono según el estado de pago y deshabilitar el campo si el saldo es 0
         mostrarIconoEstadoPago(saldoRestante);
@@ -557,6 +557,8 @@ $(document).ready(function() {
         e.preventDefault();
         let monto_abonar = parseFloat($('#monto_abonar').val());
 		let saldo_restante = parseFloat($('#saldo_restante').text().replace('Saldo Restante: S/. ', ''));
+        let saldo_restante2 = parseFloat($('#saldo_restante_editar').text().replace('Total: S/. ', ''));
+
 
 		if (isNaN(monto_abonar)) {
             bootbox.alert({

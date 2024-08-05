@@ -371,7 +371,7 @@ if ($_SESSION['ventas']==1) {
                     <tbody>
                     </tbody>
                 </table>
-                <h4 id="total">Total: S/. 0.00</h4>
+                <h4 id="saldo_restante_editar">Total: S/. 0.00</h4>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Cerrar</button>
