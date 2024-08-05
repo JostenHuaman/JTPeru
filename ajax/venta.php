@@ -95,7 +95,7 @@ switch ($_GET["op"]) {
 				}
 		
 				//$botones = '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idventa . ')"><i class="fa fa-eye"></i></button>';
-				$botones = '<button class="btn btn-warning btn-xs" onclick="editar(' . $reg->idventa . ')"><i class="fa fa-edit"></i></button>';
+				$botones = '<button class="btn btn-warning btn-xs" onclick="editar(' . $reg->idventa . ')"><i class="fa fa-search"></i></button>';
 		
 				if ($reg->estado == 'Aceptado') {
 					$botones .= ' <button class="btn btn-danger btn-xs" onclick="anular(' . $reg->idventa . ')"><i class="fa fa-close"></i></button>';

@@ -325,6 +325,7 @@ if ($_SESSION['ventas']==1) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
+                <h3 class="modal-title center"><b>Visualizar Venta</b></h3>
                 <div class="ml-auto">
                   <h4 id="estado_pago" class="float-right"></h4> 
                 </div>
