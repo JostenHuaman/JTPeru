@@ -14,6 +14,8 @@ $num_comprobante=isset($_POST["num_comprobante"])? limpiarCadena($_POST["num_com
 $fecha_hora=isset($_POST["fecha_hora"])? limpiarCadena($_POST["fecha_hora"]):"";
 $impuesto=isset($_POST["impuesto"])? limpiarCadena($_POST["impuesto"]):"";
 $total_compra=isset($_POST["total_compra"])? limpiarCadena($_POST["total_compra"]):"";
+$total_compra_editar=isset($_POST["total_compra_editar"])? limpiarCadena($_POST["total_compra_editar"]):"";
+
 
 
 switch ($_GET["op"]) {
@@ -63,7 +65,7 @@ switch ($_GET["op"]) {
 		$id=$_GET['id'];
 
 		$rspta=$ingreso->listarDetalle($id);
-		$total=0;
+		$total=20;
 		echo ' <thead style="background-color:#A9D0F5">
         <th>Opciones</th>
         <th>Articulo</th>

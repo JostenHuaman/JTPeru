@@ -373,6 +373,11 @@ function mostrar(idingreso) {
          //   $('#monto_abonar').prop('disabled', false);
         //}
 
+		let saldoRestante = parseFloat(data.total_compra);
+        $('#saldo_restante_compra').text('Total Compra: S/. ' + saldoRestante.toFixed(2));
+
+        // Mostrar icono según el estado de pago y deshabilitar el campo si el saldo es 0
+
         $('#editarModals').modal('show');
     });
 }

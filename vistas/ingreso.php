@@ -212,7 +212,7 @@ if ($_SESSION['compras']==1) {
                     <tbody>
                     </tbody>
                 </table>
-                <h4 style="margin-top: 32px; margin-bottom: 32px" id="saldo_restante_editar">Total Compra: S/. 0.00</h4>
+                <h4 style="margin-top: 32px; margin-bottom: 32px" id="saldo_restante_compra">Total Compra: S/. 0.00</h4>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Cerrar</button>
