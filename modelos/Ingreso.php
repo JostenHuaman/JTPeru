@@ -69,6 +69,33 @@ public function listar(){
 	return ejecutarConsulta($sql);
 }
 
+//###############################CAMBIOS 06-08##########################################################################
+public function obtenerDatosEditar($idingreso) {
+    $sql = "SELECT p.nombre as cliente
+            FROM ingreso v
+            JOIN persona p ON v.idproveedor = p.idpersona
+            WHERE v.idingreso = '$idingreso'";
+    return ejecutarConsultaSimpleFila($sql);
+}
+
+public function obtenerCostos($idingreso) {
+    $sql =	"SELECT impuesto
+            FROM ingreso
+            WHERE idingreso = '$idingreso'";
+    return ejecutarConsultaSimpleFila($sql);
+}
+
+public function mostrarEditar($idingreso) {
+	$sql="SELECT a.nombre AS articulo,di.cantidad,di.precio_compra,di.precio_venta FROM detalle_ingreso di INNER JOIN articulo a ON di.idarticulo=a.idarticulo WHERE di.idingreso='$idingreso'";
+    $pagos = ejecutarConsulta($sql);
+
+	$sql_total = "SELECT total_compra FROM ingreso WHERE idingreso = '$idingreso'";
+    $total = ejecutarConsultaSimpleFila($sql_total);
+
+    return array("total_compra" => $total['total_compra'], "pagos" => $pagos->fetch_all(MYSQLI_ASSOC));
+}
+
+
 }
 
  ?>

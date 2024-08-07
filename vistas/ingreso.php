@@ -150,6 +150,68 @@ if ($_SESSION['compras']==1) {
     </div>
   </div>
   <!-- fin Modal-->
+
+ <!--IMPLEMENTADO 06-08 MOSTRAR-->
+
+ <div id="editarModals" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width:800px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" style="text-align:center"><b>Visualizar Venta</b></h3>
+            </div>
+            <div class="modal-body">            
+              <div id="venta-info" style="color: #e7493b; border-radius: 5px; font-size: 16px; text-align:center">
+                <b>Cliente: <span id="nombre_cliente_editar"></b></span>
+               </div>
+                <br>
+                <div align="center">
+                    <h4>Ventas Realizadas</h4>
+                </div>
+                <table id="tablas_editar" class="table table-striped table-bordered table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th>Opciones</th>
+                            <th>Articulo</th>
+                            <th>Cantidad</th>
+                            <th>Precio Venta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <form id="form_abonar">
+                    <input type="hidden" name="idventa" id="idventa">
+                    <div class="form-group" style="display:flex;">
+                        <div style="margin-right: 40px">
+                          <label for="monto_abonar">Costos de Envio</label>
+                          <br>
+                          <span>S/. </span><input class="" type="number" name="costos_envios" onchange="SalirCasilla()" id="costos_envios" maxlength="10" placeholder="S/." step="any">
+                        </div>
+                        <div>
+                          <label for="monto_abonar">Otros Costos</label>
+                          <br>
+                          <span>S/. </span><input class="" type="number" name="costos_otros" onchange="SalirCasilla()" id="costos_otros" maxlength="10" placeholder="S/. " step="any">
+                        </div>
+                    </div>
+                    <div class="form-group" id="confirmacion_yape" style="display: none;">
+                        <label for="numero_confirmacion">Número de Operación</label>
+                        <input type="text" class="form-control" id="numero_confirmacion" name="numero_confirmacion" maxlength="15">
+                    </div >
+                    <h4 style="margin-top: 32px; margin-bottom: 32px" id="saldo_restante_editar">Total: S/. 0.00</h4>
+                    <div>
+                    <button type="submit" class="btn btn-danger" >Editar Costos</button>
+                    </div>
+                </form>                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <?php 
 }else{
  require 'noacceso.php'; 

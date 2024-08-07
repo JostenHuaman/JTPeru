@@ -152,7 +152,7 @@ function guardaryeditar(e){
      limpiar();
 }
 
-function mostrar(idingreso){
+/*function mostrar(idingreso){
 	$.post("../ajax/ingreso.php?op=mostrar",{idingreso : idingreso},
 		function(data,status)
 		{
@@ -181,7 +181,7 @@ function mostrar(idingreso){
 		$("#detalles").html(r);
 	});
 
-}
+}*/
 
 
 //funcion para desactivar
@@ -334,6 +334,46 @@ function eliminarDetalle(indice){
 		}
 	})
 }
+
+//########################CAMBIO 06-08################################################################
+function mostrar(idingreso) {
+    $('#idventa').val(idingreso);
+    $.post("../ajax/ingreso.php?op=mostrar", {idingreso: idingreso}, function(data, status) {
+        data = JSON.parse(data);
+        $('#total_venta').val(data.total_compra);
+        $('#nombre_cliente_editar').text(data.cliente);  // Asegurar de estar correcto
+        $('#costos_envios').val(data.impuesto); // Esta línea está actualizando el div con el idcliente
+        //$('#costos_otros').val(data.costo_otros);
+        $('#idcliente').text(data.cliente); // Esta línea está actualizando el div con el idcliente
+        let totalPagos = 0;
+        $('#tablas_editar tbody').empty();
+        for (let pago of data.pagos) {
+            $('#tablas_editar tbody').append(`<tr>
+				<td>${pago.articulo}</td>
+				<td>${pago.cantidad}</td>
+				<td>${pago.precio_compra}</td>
+				<td>${pago.precio_venta}</td>
+				</tr>`);
+            totalPagos += parseFloat(pago.monto);
+        }
+
+      //  <td><button class="btn btn-danger btn-xs" onclick="eliminarPago(${pago.idpago})"><i class="fa fa-trash"></i></button></td>
+    //  let saldoRestante = parseFloat(data.total_compra);
+     //   $('#saldo_restante_editar').text('Total: S/. ' + saldoRestante.toFixed(2));
+
+        // Mostrar icono según el estado de pago y deshabilitar el campo si el saldo es 0
+       // mostrarIconoEstadoPago(saldoRestante);
+        //if (saldoRestante <= 0) {
+        //    $('#monto_abonar').prop('disabled', true);
+       // } else {
+         //   $('#monto_abonar').prop('disabled', false);
+        //}
+
+        $('#editarModals').modal('show');
+    });
+}
+
+
 
 // Función para habilitar o deshabilitar los campos de comprobante
 function habilitarCamposComprobante() {

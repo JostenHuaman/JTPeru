@@ -33,9 +33,27 @@ switch ($_GET["op"]) {
 		break;
 	
 	case 'mostrar':
-		$rspta=$ingreso->mostrar($idingreso);
-		echo json_encode($rspta);
-		break;
+		$idingreso = $_POST['idingreso'];
+							
+		// Obtener datos del cliente
+		$datosCliente = $ingreso->obtenerDatosEditar($idingreso);
+							
+		// Obtener datos del costo
+		$datosCostos = $ingreso->obtenerCostos($idingreso);
+
+		// Obtener pagos
+		$datosPagos = $ingreso->mostrarEditar($idingreso);
+							
+		// Combinar todos los datos en una respuesta
+		$respuesta = array(
+			'cliente' => $datosCliente['cliente'],
+			'impuesto' => $datosCostos['impuesto'],
+			'total_compra' => $datosPagos['total_compra'],
+			'pagos' => $datosPagos['pagos']
+							);
+							
+		echo json_encode($respuesta);
+		break;	
 
 	case 'listarDetalle':
 		//recibimos el idingreso
@@ -76,10 +94,13 @@ switch ($_GET["op"]) {
     case 'listar':
 		$rspta=$ingreso->listar();
 		$data=Array();
-
+/*
 		while ($reg=$rspta->fetch_object()) {
 			$data[]=array(
-            "0"=>($reg->estado=='Aceptado')?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idingreso.')"><i class="fa fa-eye"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="anular('.$reg->idingreso.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idingreso.')"><i class="fa fa-eye"></i></button>',
+            "0"=>($reg->estado=='Aceptado')?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idingreso.')"><i class="fa fa-eye"></i></button>'.' 
+			                              '.'<button class="btn btn-danger btn-xs" onclick="anular('.$reg->idingreso.')"><i class="fa fa-close"></i></button>'.' 
+										 '.'<button class="btn btn-danger btn-xs" onclick="mostrarse('.$reg->idingreso.')"><i class="fa fa-close"></i></button>':'
+										   <button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idingreso.')"><i class="fa fa-eye"></i></button>',
 			'1'=>$reg->idingreso,
             "2"=>$reg->fecha,
             "3"=>$reg->proveedor,
@@ -89,7 +110,31 @@ switch ($_GET["op"]) {
             "7"=>$reg->total_compra,
             "8"=>($reg->estado=='Aceptado')?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Anulado</span>'
               );
+		}*/
+		while ($reg = $rspta->fetch_object()) {
+			
+			$botones = '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idingreso . ')"><i class="fa fa-search"></i></button>';
+			if ($reg->estado == 'Aceptado') {
+				$botones .= ' <button class="btn btn-danger btn-xs" onclick="anular(' . $reg->idingreso . ')"><i class="fa fa-close"></i></button>';
+				$botones .= ' <button class="btn btn-success btn-xs" onclick="mostrarse(' . $reg->idingreso . ')"><i class="fa fa-money"></i></button>';
+				$botones .= ' <button class="btn btn-success btn-xs" onclick="mostrar(' . $reg->idingreso . ')"><i class="fa fa-money"></i></button>';
+			} else {
+				$botones = '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idingreso . ')"><i class="fa fa-eye"></i></button>';
+			}
+	
+			$data[] = array(
+			"0" => $botones,
+			'1'=>$reg->idingreso,
+			"2"=>$reg->fecha,
+			"3"=>$reg->proveedor,
+			"4"=>$reg->usuario,
+			"5"=>$reg->tipo_comprobante,
+			"6"=>$reg->serie_comprobante. '-' .$reg->num_comprobante,
+			"7"=>$reg->total_compra,
+			"8"=>($reg->estado=='Aceptado')?'<span class="label bg-green">Aceptado</span>':'<span class="label bg-red">Anulado</span>'
+			);
 		}
+	
 		$results=array(
              "sEcho"=>1,//info para datatables
              "iTotalRecords"=>count($data),//enviamos el total de registros al datatable
@@ -135,7 +180,29 @@ switch ($_GET["op"]) {
 		echo json_encode($results);
 
 				break;
-				
+/*
+				case 'mostrarse':
+					$idingreso = $_POST['idingreso'];
+										
+					// Obtener datos del cliente
+					$datosCliente = $ingreso->obtenerDatosEditar($idingreso);
+										
+					// Obtener datos del costo
+					$datosCostos = $ingreso->obtenerCostos($idingreso);
+			
+					// Obtener pagos
+					$datosPagos = $ingreso->mostrarEditar($idingreso);
+										
+					// Combinar todos los datos en una respuesta
+					$respuesta = array(
+						'cliente' => $datosCliente['cliente'],
+						'impuesto' => $datosCostos['impuesto'],
+						'total_compra' => $datosPagos['total_compra'],
+						'pagos' => $datosPagos['pagos']
+										);
+										
+					echo json_encode($respuesta);
+					break;	*/
 				case 'devolverStock':
 					// Obtener los datos enviados por la solicitud AJAX
 					$idarticulo = isset($_POST["idarticulo"]) ? limpiarCadena($_POST["idarticulo"]) : "";
