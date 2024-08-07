@@ -157,51 +157,62 @@ if ($_SESSION['compras']==1) {
     <div class="modal-dialog" style="width:800px">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" style="text-align:center"><b>Visualizar Venta</b></h3>
+               <!-- <h3 class="modal-title" style="text-align:center"><b>Visualizar Compras</b></h3> -->
             </div>
             <div class="modal-body">            
               <div id="venta-info" style="color: #e7493b; border-radius: 5px; font-size: 16px; text-align:center">
-                <b>Cliente: <span id="nombre_cliente_editar"></b></span>
+                <b>Proveedor: <span id="nombre_cliente_editar"></b></span>
                </div>
                 <br>
                 <div align="center">
-                    <h4>Ventas Realizadas</h4>
-                </div>
-                <table id="tablas_editar" class="table table-striped table-bordered table-condensed table-hover">
-                    <thead>
-                        <tr>
-                            <th>Opciones</th>
-                            <th>Articulo</th>
-                            <th>Cantidad</th>
-                            <th>Precio Venta</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
                 <form id="form_abonar">
                     <input type="hidden" name="idventa" id="idventa">
                     <div class="form-group" style="display:flex;">
                         <div style="margin-right: 40px">
-                          <label for="monto_abonar">Costos de Envio</label>
+                          <label for="">Fecha:</label>
                           <br>
-                          <span>S/. </span><input class="" type="number" name="costos_envios" onchange="SalirCasilla()" id="costos_envios" maxlength="10" placeholder="S/." step="any">
+                          <span></span><input class="form-control" type="date" name="fecha_horas" onchange="SalirCasilla()" id="fecha_horas" maxlength="10" step="any">
                         </div>
-                        <div>
-                          <label for="monto_abonar">Otros Costos</label>
+                        <div style="margin-right: 40px">
+                          <label for="">Tipo Comprobante:</label>
                           <br>
-                          <span>S/. </span><input class="" type="number" name="costos_otros" onchange="SalirCasilla()" id="costos_otros" maxlength="10" placeholder="S/. " step="any">
+                          <span></span><input class="form-control" type="text" name="tcomprobante" onchange="SalirCasilla()" id="tcomprobante" maxlength="10" step="any">
+                        </div>
+                        <div style="margin-right: 20px">
+                          <label for="">Serie:</label>
+                          <br>
+                          <span></span><input class="form-control" type="text" name="nserie" onchange="SalirCasilla()" id="nserie" maxlength="10" step="any">
+                        </div>
+                        <div style="margin-right: 20px">
+                          <label for="">Numero:</label>
+                          <br>
+                          <span></span><input class="form-control" type="numero" name="numero" onchange="SalirCasilla()" id="numero" maxlength="10" step="any">
                         </div>
                     </div>
                     <div class="form-group" id="confirmacion_yape" style="display: none;">
                         <label for="numero_confirmacion">Número de Operación</label>
                         <input type="text" class="form-control" id="numero_confirmacion" name="numero_confirmacion" maxlength="15">
                     </div >
-                    <h4 style="margin-top: 32px; margin-bottom: 32px" id="saldo_restante_editar">Total: S/. 0.00</h4>
                     <div>
-                    <button type="submit" class="btn btn-danger" >Editar Costos</button>
+                    <!--<button type="submit" class="btn btn-danger" >Editar Costos</button>-->
                     </div>
-                </form>                
+                </form>      
+                    <h4>Compras Realizadas</h4>
+                </div>
+                <table id="tablas_editar" class="table table-striped table-bordered table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th>Articulo</th>
+                            <th>Cantidad</th>
+                            <th>Precio Compra</th>
+                            <th>Precio Venta</th>
+                            <th>SubTotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <h4 style="margin-top: 32px; margin-bottom: 32px" id="saldo_restante_editar">Total Compra: S/. 0.00</h4>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Cerrar</button>

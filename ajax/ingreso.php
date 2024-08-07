@@ -47,7 +47,10 @@ switch ($_GET["op"]) {
 		// Combinar todos los datos en una respuesta
 		$respuesta = array(
 			'cliente' => $datosCliente['cliente'],
-			'impuesto' => $datosCostos['impuesto'],
+			'fecha_hora' => $datosCostos['fecha_hora'],
+			'tipo_comprobante' => $datosCostos['tipo_comprobante'],
+			'serie_comprobante' => $datosCostos['serie_comprobante'],
+			'num_comprobante' => $datosCostos['num_comprobante'],
 			'total_compra' => $datosPagos['total_compra'],
 			'pagos' => $datosPagos['pagos']
 							);
@@ -116,8 +119,8 @@ switch ($_GET["op"]) {
 			$botones = '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idingreso . ')"><i class="fa fa-search"></i></button>';
 			if ($reg->estado == 'Aceptado') {
 				$botones .= ' <button class="btn btn-danger btn-xs" onclick="anular(' . $reg->idingreso . ')"><i class="fa fa-close"></i></button>';
-				$botones .= ' <button class="btn btn-success btn-xs" onclick="mostrarse(' . $reg->idingreso . ')"><i class="fa fa-money"></i></button>';
-				$botones .= ' <button class="btn btn-success btn-xs" onclick="mostrar(' . $reg->idingreso . ')"><i class="fa fa-money"></i></button>';
+				//$botones .= ' <button class="btn btn-success btn-xs" onclick="mostrarse(' . $reg->idingreso . ')"><i class="fa fa-money"></i></button>';
+				//$botones .= ' <button class="btn btn-success btn-xs" onclick="mostrar(' . $reg->idingreso . ')"><i class="fa fa-money"></i></button>';
 			} else {
 				$botones = '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idingreso . ')"><i class="fa fa-eye"></i></button>';
 			}

@@ -342,8 +342,11 @@ function mostrar(idingreso) {
         data = JSON.parse(data);
         $('#total_venta').val(data.total_compra);
         $('#nombre_cliente_editar').text(data.cliente);  // Asegurar de estar correcto
-        $('#costos_envios').val(data.impuesto); // Esta línea está actualizando el div con el idcliente
-        //$('#costos_otros').val(data.costo_otros);
+        $('#fecha_horas').val(data.fecha_hora); // Esta línea está actualizando el div con el idcliente
+        $('#tcomprobante').val(data.tipo_comprobante);
+		$('#nserie').val(data.serie_comprobante);
+		$('#numero').val(data.num_comprobante);
+		//$('#costos_otros').val(data.costo_otros);
         $('#idcliente').text(data.cliente); // Esta línea está actualizando el div con el idcliente
         let totalPagos = 0;
         $('#tablas_editar tbody').empty();
@@ -353,6 +356,7 @@ function mostrar(idingreso) {
 				<td>${pago.cantidad}</td>
 				<td>${pago.precio_compra}</td>
 				<td>${pago.precio_venta}</td>
+				<td>${pago.subtotal}</td>
 				</tr>`);
             totalPagos += parseFloat(pago.monto);
         }

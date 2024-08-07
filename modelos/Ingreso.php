@@ -79,14 +79,17 @@ public function obtenerDatosEditar($idingreso) {
 }
 
 public function obtenerCostos($idingreso) {
-    $sql =	"SELECT impuesto
+   // $sql =	"SELECT impuesto
+   //         FROM ingreso
+   //         WHERE idingreso = '$idingreso'";
+	$sql =  "SELECT fecha_hora, tipo_comprobante, serie_comprobante, num_comprobante
             FROM ingreso
             WHERE idingreso = '$idingreso'";
     return ejecutarConsultaSimpleFila($sql);
 }
 
 public function mostrarEditar($idingreso) {
-	$sql="SELECT a.nombre AS articulo,di.cantidad,di.precio_compra,di.precio_venta FROM detalle_ingreso di INNER JOIN articulo a ON di.idarticulo=a.idarticulo WHERE di.idingreso='$idingreso'";
+	$sql="SELECT a.nombre AS articulo,di.cantidad,di.precio_compra,di.precio_venta,(di.precio_compra*di.cantidad) AS subtotal FROM detalle_ingreso di INNER JOIN articulo a ON di.idarticulo=a.idarticulo WHERE di.idingreso='$idingreso'";
     $pagos = ejecutarConsulta($sql);
 
 	$sql_total = "SELECT total_compra FROM ingreso WHERE idingreso = '$idingreso'";
