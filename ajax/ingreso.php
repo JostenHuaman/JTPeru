@@ -118,7 +118,7 @@ switch ($_GET["op"]) {
 		}*/
 		while ($reg = $rspta->fetch_object()) {
 			
-			$botones = '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idingreso . ')"><i class="fa fa-search"></i></button>';
+			$botones = '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idingreso . ')"><i class="fa fa-eye"></i></button>';
 			if ($reg->estado == 'Aceptado') {
 				$botones .= ' <button class="btn btn-danger btn-xs" onclick="anular(' . $reg->idingreso . ')"><i class="fa fa-close"></i></button>';
 				//$botones .= ' <button class="btn btn-success btn-xs" onclick="mostrarse(' . $reg->idingreso . ')"><i class="fa fa-money"></i></button>';

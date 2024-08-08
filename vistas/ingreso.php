@@ -157,7 +157,7 @@ if ($_SESSION['compras']==1) {
     <div class="modal-dialog" style="width:800px">
         <div class="modal-content">
             <div class="modal-header">
-               <!-- <h3 class="modal-title" style="text-align:center"><b>Visualizar Compras</b></h3> -->
+                <h3 class="modal-title" style="text-align:center"><b>Visualizar Compras</b></h3> 
             </div>
             <div class="modal-body">            
               <div id="venta-info" style="color: #e7493b; border-radius: 5px; font-size: 16px; text-align:center">
