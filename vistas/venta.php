@@ -33,7 +33,7 @@ if ($_SESSION['ventas']==1) {
 <div class="panel-body table-responsive" id="listadoregistros">
   <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
     <thead>
-      <th>Opciones</th>
+      <th style="min-width: 95px;">Opciones</th>
       <th>#</th>
       <th>Fecha</th>
       <th>Página</th>
