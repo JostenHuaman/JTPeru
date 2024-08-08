@@ -354,9 +354,9 @@ function mostrar(idingreso) {
             $('#tablas_editar tbody').append(`<tr>
 				<td>${pago.articulo}</td>
 				<td>${pago.cantidad}</td>
-				<td>${pago.precio_compra}</td>
-				<td>${pago.precio_venta}</td>
-				<td>${pago.subtotal}</td>
+				<td>S/. ${pago.precio_compra}</td>
+				<td>S/. ${pago.precio_venta}</td>
+				<td>S/. ${pago.subtotal}</td>
 				</tr>`);
             totalPagos += parseFloat(pago.monto);
         }
