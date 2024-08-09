@@ -173,6 +173,8 @@ if ($_SESSION['ventas']==1) {
        <option>TikTok MYSTORE</option>
        <option>TikTok STORELYON</option>
      </select>
+    </div><div class="form-group col-lg-1 col-md-2 col-xs-6">
+      <button class="btn btn-info" type="submit" id="btnGuardar" style="margin-top:25px"><i class="fa fa-save"></i>  Guardar</button>
     </div>
 
     <div class="form-group col-lg-12 col-md-3 col-sm-6 col-xs-12">
@@ -181,7 +183,6 @@ if ($_SESSION['ventas']==1) {
      </a>
     </div>
     <div class="form-group col-lg-12 col-md-3 col-xs-6">
-    <button class="btn btn-info" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>
    <!--<button class="btn btn-info" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>-->
     </div>
 <div class="form-group col-lg-12 col-md-12 col-xs-12">
@@ -349,16 +350,16 @@ if ($_SESSION['ventas']==1) {
                     <tbody>
                     </tbody>
                 </table>
-                <form id="form_abonar">
+                <form id="formulario_editar" method="POST" name="formulario_editar">
                     <input type="hidden" name="idventa" id="idventa">
-                    <div class="form-group" style="display:flex;">
-                        <div style="margin-right: 40px">
-                          <label for="monto_abonar">Costos de Envio</label>
+                    <div class="form-group" style="display:flex; flex-direction: column; align-items: end;">
+                        <div style="">
+                          <label for="costos_envios">Costos de Envio</label>
                           <br>
                           <span>S/. </span><input class="" type="number" name="costos_envios" onchange="SalirCasilla()" id="costos_envios" maxlength="10" placeholder="S/." step="any">
                         </div>
                         <div>
-                          <label for="monto_abonar">Otros Costos</label>
+                          <label for="costos_otros">Otros Costos</label>
                           <br>
                           <span>S/. </span><input class="" type="number" name="costos_otros" onchange="SalirCasilla()" id="costos_otros" maxlength="10" placeholder="S/. " step="any">
                         </div>
@@ -367,13 +368,13 @@ if ($_SESSION['ventas']==1) {
                         <label for="numero_confirmacion">Número de Operación</label>
                         <input type="text" class="form-control" id="numero_confirmacion" name="numero_confirmacion" maxlength="15">
                     </div >
-                    <h4 style="margin-top: 32px; margin-bottom: 32px" id="saldo_restante_editar">Total: S/. 0.00</h4>
+                    <h4 style="margin-top: 32px; margin-bottom: 32px; text-align:end" id="saldo_restante_editar">Total: S/. 0.00</h4>
                     <div>
-                    <button type="submit" class="btn btn-danger" >Editar Costos</button>
-                    </div>
-                </form>                
-            </div>
-            <div class="modal-footer">
+                      </div>
+                    </form>                
+                  </div>
+                  <div class="modal-footer">
+                  <button type="submit" class="btn btn-danger" id="btnGuardarEditar" >Guardar Cambios</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Cerrar</button>
             </div>
         </div>
@@ -381,7 +382,37 @@ if ($_SESSION['ventas']==1) {
 </div>
 
 
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Elementos del formulario principal
+    var costoEnvioPrincipalInput = document.getElementById('costo_envio');
+    var costoOtrosPrincipalInput = document.getElementById('costo_otros');
 
+    // Elementos del modal
+    var costosEnviosInput = document.getElementById('costos_envios');
+    var costosOtrosInput = document.getElementById('costos_otros');
+
+    // Botón para guardar en el modal
+    var btnGuardarEditar = document.getElementById('btnGuardar');
+
+    btnGuardarEditar.addEventListener('click', function() {
+        // Transferir valores del modal al formulario principal
+        costoEnvioPrincipalInput.value = costosEnviosInput.value;
+        costoOtrosPrincipalInput.value = costosOtrosInput.value;
+
+        // Verificar si los valores se transfirieron correctamente
+        console.log('Costos de Envio:', costoEnvioPrincipalInput.value);
+        console.log('Otros Costos:', costoOtrosPrincipalInput.value);
+
+        // Cierra el modal después de guardar
+        $('#editarModal').modal('hide');
+
+        // Envía el formulario principal después de cerrar el modal
+        var formPrincipal = document.getElementById('formulario');
+        formPrincipal.submit();
+    });
+});
+</script>
 
 <?php 
 }else{

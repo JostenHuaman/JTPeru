@@ -95,12 +95,12 @@ switch ($_GET["op"]) {
 				}
 		
 				//$botones = '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idventa . ')"><i class="fa fa-eye"></i></button>';
-				$botones = '<button class="btn btn-warning btn-xs" onclick="editar(' . $reg->idventa . ')"><i class="fa fa-search"></i></button>';
+				$botones = '<button class="btn btn-warning btn-xs" onclick="editar(' . $reg->idventa . ')" title="Visualizar"><i class="fa fa-search"></i></button>';
 		
 				if ($reg->estado == 'Aceptado') {
-					$botones .= ' <button class="btn btn-danger btn-xs" onclick="anular(' . $reg->idventa . ')"><i class="fa fa-close"></i></button>';
-					$botones .= ' <a target="_blank" href="' . $url . $reg->idventa . '"><button class="btn btn-info btn-xs"><i class="fa fa-file"></i></button></a>';
-					$botones .= ' <button class="btn btn-success btn-xs" onclick="abonar(' . $reg->idventa . ')"><i class="fa fa-money"></i></button>';
+					$botones .= ' <button class="btn btn-danger btn-xs" onclick="anular(' . $reg->idventa . ')" title="Cancelar"><i class="fa fa-close"></i></button>';
+					$botones .= ' <a target="_blank" href="' . $url . $reg->idventa . '" title="Imprimir"><button class="btn btn-info btn-xs"><i class="fa fa-file"></i></button></a>';
+					$botones .= ' <button class="btn btn-success btn-xs" onclick="abonar(' . $reg->idventa . ')"title="Abonar"><i class="fa fa-money"></i></button>';
 				//	$botones .= ' <button class="btn btn-success btn-xs" onclick="editar(' . $reg->idventa . ')"><i class="fa fa-edit"></i></button>';
 				} else {
 		     		//$botones = '<button class="btn btn-warning btn-xs" onclick="mostrar(' . $reg->idventa . ')"><i class="fa fa-eye"></i></button>';
